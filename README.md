@@ -1,42 +1,64 @@
-# Mamografi Radyoloji Raporlarından Varlık İsmi Çıkarımı ve BIRADS Kategori Tahmini
+# **Mamografi Radyoloji Raporlarından Varlık İsmi Çıkarımı ve BIRADS Kategori Tahmini**
 
-Bu proje, mamografi radyoloji raporlarından varlık ismi çıkarımı (VİÇ) ve BIRADS (Breast Imaging-Reporting and Data System) kategori tahmini yapmayı hedeflemektedir. Proje kapsamında iki temel görev gerçekleştirilmiştir: birincisi BIRADS kategori tahmini, ikincisi ise varlık ismi çıkarımıdır.
+Bu proje, mamografi radyoloji raporlarından varlık ismi çıkarımı (VİÇ) ve BIRADS (Breast Imaging-Reporting and Data System) kategori tahmini yapmayı hedeflemektedir. Proje kapsamında iki ana görev gerçekleştirilmiştir: birincisi BIRADS kategori tahmini, ikincisi ise varlık ismi çıkarımıdır (NER - Named Entity Recognition).
 
-## Proje İçeriği
+## **Proje İçeriği**
 
-- **BIRADS Kategori Tahmini**: BIRADS kategorilerinin tahmini için BERT modeli kullanılmıştır.
-  - BIRADS-1 sınıfı için veri dengesizliği olduğu tespit edilmiş ve artırma (augmentation) yöntemleri uygulanarak denge sağlanmıştır.
-  - Model eğitimi sonrasında test işlemi gerçekleştirilmiş ve sonuçlar `precision`, `recall`, `f1-score` ve `accuracy` metrikleri ile değerlendirilmiştir.
-  
-- **Varlık İsmi Çıkarımı (VİÇ)**: Varlık ismi çıkarımı işlemi için Spacy kütüphanesi kullanılmıştır.
-  - Modelin performansı `F1-score`, `precision` ve `recall` metrikleri ile değerlendirilmiştir.
-  - Çıktı dosyası, yarışma için istenilen JSON formatında sunulmuştur.
+### **1. BIRADS Kategori Tahmini**
+- BIRADS kategorilerinin tahmini için **BERT** (Bidirectional Encoder Representations from Transformers) modeli kullanılmıştır.
+- BIRADS-1 sınıfı için veri dengesizliği tespit edilmiştir. Bu dengesizlik, **veri artırma (augmentation)** teknikleri ile giderilmiştir.
+- Modelin eğitimi sonrası test işlemi gerçekleştirilmiş ve sonuçlar, aşağıdaki metriklerle değerlendirilmiştir:
+  - **Precision**
+  - **Recall**
+  - **F1-Score**
+  - **Accuracy**
 
-## Proje Yapısı
+### **2. Varlık İsmi Çıkarımı (VİÇ)**
+- Varlık ismi çıkarımı işlemi için **SpaCy** kütüphanesinin Named Entity Recognition (NER) modeli kullanılmıştır.
+- Modelin performansı aşağıdaki metriklerle değerlendirilmiştir:
+  - **Precision**
+  - **Recall**
+  - **F1-Score**
+- Çıktılar, yarışma gereksinimlerine uygun olarak **JSON formatında** hazırlanmıştır.
 
-Proje aşağıdaki ana klasör ve dosyalardan oluşmaktadır:
+---
+
+## **Proje Yapısı**
+
+Proje aşağıdaki klasör ve dosyaları içerir:
 
 - `Birads-viç/`
-  - **ikinciAsama**: Jupyter Notebook kaynaklı dosyalar ve proje boyunca gerçekleştirilen tüm aşamaları içerir.
-  - **NLPdemo**: İkinci aşama için yapılan deneme kodlarını içerir.
-  - **öznitelik**: Projede kullanılan öznitelik çıkartma işlemlerine ait kodları içerir.
-  - **VİÇ**: Varlık ismi çıkarımı için yapılan deneme kodlarını içerir.
-  
-## Kullanılan Modeller ve Teknolojiler
+  - **ikinciAsama**: Jupyter Notebook dosyaları ve proje süresince gerçekleştirilen tüm aşamaları içerir.
+  - **NLPdemo**: İkinci aşama için yapılan deneysel deneme kodlarını içerir.
+  - **öznitelik**: Projede kullanılan öznitelik çıkarma işlemleri için geliştirilmiş kodları içerir.
+  - **VİÇ**: Varlık ismi çıkarımı (NER) için yapılan deneme kodlarını içerir.
 
-### BIRADS Kategori Tahmini
-- **Model**: BERT (Bidirectional Encoder Representations from Transformers)
-- **Veri Artırma**: BIRADS 1 için veri dengesizliğini gidermek amacıyla veri artırma (data augmentation) teknikleri kullanılmıştır.
-- **Metrikler**: Precision, Recall, F1-Score, Accuracy
+---
 
-### Varlık İsmi Çıkarımı (VİÇ)
-- **Model**: Spacy NER (Named Entity Recognition)
-- **Metrikler**: Precision, Recall, F1-Score
+## **Kullanılan Modeller ve Teknolojiler**
 
-## Kurulum
+### **BIRADS Kategori Tahmini**
+- **Model**: BERT (Transformer tabanlı bir dil modeli)
+- **Veri Artırma**: BIRADS-1 için veri dengesizliğini gidermek amacıyla veri artırma (data augmentation) yöntemleri kullanılmıştır.
+- **Değerlendirme Metrikleri**:
+  - Precision
+  - Recall
+  - F1-Score
+  - Accuracy
 
-Bu projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz.
+### **Varlık İsmi Çıkarımı (VİÇ)**
+- **Model**: SpaCy NER (Named Entity Recognition)
+- **Değerlendirme Metrikleri**:
+  - Precision
+  - Recall
+  - F1-Score
 
-1. **Python Gereksinimleri**: Proje, Python 3.x ile uyumludur. Gerekli kütüphaneleri yüklemek için aşağıdaki komutu çalıştırın:
+---
+
+## **Kurulum Talimatları**
+
+Projenin yerel bir bilgisayarda çalıştırılması için aşağıdaki adımları izleyebilirsiniz:
+
+1. **Python Gereksinimleri**: Bu proje Python 3.x sürümü ile uyumludur. Gerekli bağımlılıkları yüklemek için proje klasöründe aşağıdaki komutu çalıştırın:
    ```bash
    pip install -r requirements.txt
